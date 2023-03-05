@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section >
+
+        <div class="container mt-3 ">
+        <div class="table-wrapper  ">
+            <div class="table-title">
+                <div class="row ">
+                    <div class="col-md-10"><h2>Publisher List</h2></div>
+                    <div class="col-md-2">
+                        <a th:href="@{/addPublisher}"><button type="button" class="btn btn-primary add-new"><i class="fa fa-plus"></i> Add Publisher</button></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <span th:each="publisher: ${publishers}">
+                <tr>
+                    <td th:text="${publisher.id}"></td>
+                    <td th:text="${publisher.name}"></td>
+
+
+                    <td class="text-center">
+                        <a class="add"  th:href="@{/addPublisher}" title="Add" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-plus mr-3"></i></a>
+                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-pen mr-3"></i></a>
+                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+                    </span>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</section>
+
+</body>
+</html>

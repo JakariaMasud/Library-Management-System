@@ -5,10 +5,8 @@ import com.mvc.Library.Management.System.services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AuthorController {
@@ -31,9 +29,34 @@ public class AuthorController {
 
     }
     @GetMapping("/authors")
-    public String getAllAuthors(@ModelAttribute Author author,Model model){
+    public String getAllAuthors(Model model){
         model.addAttribute("authors",authorService.getAllAuthors());
         return "authors";
 
+    }
+
+    @PostMapping("/updateAuthor/{authorId}")
+    public String updateAuthor(@ModelAttribute Author author, @PathVariable("authorId") Integer authorId, BindingResult result,Model model){
+        if(result.hasErrors()){
+            model.addAttribute("author",author);
+            return "update-author";
+        }
+        authorService.updateAuthor(author,authorId);
+        model.addAttribute("authors",authorService.getAllAuthors());
+        return "authors";
+    }
+    @GetMapping("/updateAuthor/{authorId}")
+    public String showFormUpdateAuthor(Model model, @PathVariable("authorId") Integer authorId){
+        Author author = authorService.getAuthorById(authorId);
+        model.addAttribute("author",author);
+        System.out.println("show form update called");
+      return "update-author" ;
+    }
+
+    @RequestMapping(value = "/deleteAuthor/{id}")
+    public String deleteAuthor(@PathVariable("id") Integer id,Model model){
+        authorService.deleteAuthor(id);
+        model.addAttribute("authors",authorService.getAllAuthors());
+        return "authors";
     }
 }

@@ -33,9 +33,9 @@
 
 
                     <td class="text-center">
-                        <a class="add"  th:href="@{/addCategory}" title="Add" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-plus mr-3"></i></a>
-                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-pen mr-3"></i></a>
-                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
+                       <a class="add" title="Add" th:href="@{/addCategory}" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-plus mr-3"></i></a>
+                        <a class="edit" href="#" th:href="@{/updateCategory/{id}(id=${category.id})}" title="Edit" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-pen mr-3"></i></a>
+                        <a class="delete"  th:href="@{/deleteCategory/{id}(id=${category.id})}"title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
                     </span>

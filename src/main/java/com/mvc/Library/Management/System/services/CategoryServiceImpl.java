@@ -18,11 +18,13 @@ public class CategoryServiceImpl  implements CategoryService{
 
     @Override
     public Category updateCategory(Category category, Integer categoryId) {
-        return null;
+        category.setId(categoryId);
+        return categoryRepository.save(category);
     }
 
     @Override
     public Void deleteCategory(Integer categoryId) {
+        categoryRepository.deleteById(categoryId);
         return null;
     }
 

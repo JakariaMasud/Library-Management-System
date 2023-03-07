@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section >
+
+        <div class="container mt-3 ">
+        <div class="table-wrapper  ">
+            <div class="table-title">
+                <div class="row ">
+                    <div class="col-md-10"><h2>Book List</h2></div>
+                    <div class="col-md-2">
+                        <a th:href="@{/addBook}"><button type="button" class="btn btn-primary add-new"><i class="fa fa-plus"></i> Add Book</button></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>ISBN</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Author</th>
+                    <th>Publisher</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <span th:each="book: ${books}">
+                <tr>
+                    <td th:text="${book.id}"></td>
+                    <td th:text="${book.name}"></td>
+                    <td th:text="${book.isbn}"></td>
+                    <td th:text="${book.description}"></td>
+                    <td th:text="${book.categories[0].name}"></td>
+                    <td th:text="${book.authors[0].name}"></td>
+                    <td th:text="${book.publishers[0].name}"></td>
+
+
+                    <td class="text-center">
+                        <a class="add" title="Add" th:href="@{/addBook}" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-plus mr-3"></i></a>
+                        <a class="edit" href="#" th:href="@{/updateBook/{id}(id=${book.id})}" title="Edit" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-pen mr-3"></i></a>
+                        <a class="delete"  th:href="@{/deleteBook/{id}(id=${book.id})}"title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+                    </span>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</section>
+
+</body>
+</html>

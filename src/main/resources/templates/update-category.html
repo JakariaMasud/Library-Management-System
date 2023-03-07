@@ -11,14 +11,13 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div>
-          <h1 class="text-center">Add a Publisher</h1>
+          <h1 class="text-center">Update Category</h1>
           <div>
-            <form method="post"  th:action="@{/publishers}" th:object="${publisher}">
+            <form method="post" th:href="@{/updateCategory/{id}(id=${category.id})}" th:object="${category}">
               <div class="mb-3">
-                <label for="nameField" class="form-label">Publisher Name</label>
-                <input type="text" class="form-control" id="nameField" placeholder="Enter Publisher Here" th:field="*{name}">
+                <label for="nameField" class="form-label">Name</label>
+                <input type="text" class="form-control" id="nameField" placeholder="Enter Category Name " th:field="*{name}">
               </div>
-
               <button class="btn btn-success" type="submit">Submit</button>
               <button class="btn btn-warning" type="reset">Reset</button>
             </form>

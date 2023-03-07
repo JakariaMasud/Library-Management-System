@@ -33,11 +33,10 @@
                     <td th:text="${author.name}"></td>
                     <td th:text="${author.description}"></td>
 
-
                     <td class="text-center">
-                        <a class="add" title="Add" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-plus mr-3"></i></a>
-                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-pen mr-3"></i></a>
-                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
+                        <a class="add" title="Add" th:href="@{/addAuthor}" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-plus mr-3"></i></a>
+                        <a class="edit" href="#" th:href="@{/updateAuthor/{id}(id=${author.id})}" title="Edit" data-toggle="tooltip"><i class="fa-sharp fa-solid fa-pen mr-3"></i></a>
+                        <a class="delete"  th:href="@{/deleteAuthor/{id}(id=${author.id})}"title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
                     </span>

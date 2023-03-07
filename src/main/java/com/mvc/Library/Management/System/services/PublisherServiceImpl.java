@@ -28,11 +28,13 @@ public class PublisherServiceImpl implements PublisherService{
 
     @Override
     public Publisher updatePublisher(Publisher publisher, Integer publisherId) {
-        return null;
+        publisher.setId(publisherId);
+        return publisherRepository.save(publisher);
     }
 
     @Override
     public Void deletePublisher(Integer publisherId) {
+        publisherRepository.deleteById(publisherId);
         return null;
     }
 }

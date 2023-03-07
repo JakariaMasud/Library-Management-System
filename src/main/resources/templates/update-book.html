@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<section>
+  <div class="container">
+
+    <div class="row ">
+      <div class="col-md-8 col-md-offset-2">
+        <div>
+          <h1 class="text-center">Update Book</h1>
+          <div>
+            <form method="post" th:href="@{/updateBook/{id}(id=${book.id})}" th:object="${book}">
+              <div class="mb-3">
+                <label for="nameField" class="form-label">Name</label>
+                <input type="text" class="form-control" id="nameField" placeholder="Enter Name Of Book " th:field="*{name}">
+              </div>
+              <div class="mb-3">
+                <label for="isbnField" class="form-label">ISBN</label>
+                <input type="text" class="form-control" id="isbnField" placeholder="Enter ISBN  " th:field="*{isbn}">
+              </div>
+              <div class="mb-3">
+                <label for="descriptionField" class="form-label">Description</label>
+                <textarea class="form-control" id="descriptionField" rows="3" th:field="*{description}" placeholder="Enter Description Here"></textarea>
+              </div>
+              <div class="form-group ">
+                <label for="categoryField" class="col-form-label">Category</label>
+                <select th:field ="*{categories}" class="form-control" id="categoryField" >
+                  <option th:each="category: ${categories}" th:value="${category.id}" th:text = "${category.name}"></option>
+                </select>
+              </div>
+              <div class="form-group ">
+                <label for="authorField" class="col-form-label">Author</label>
+                <select th:field ="*{authors}" class="form-control" id="authorField" >
+                  <option th:each="author: ${authors}" th:value="${author.id}" th:text = "${author.name}"></option>
+                </select>
+              </div>
+              <div class="form-group ">
+                <label for="publisherField" class="col-form-label">Publisher</label>
+                <select th:field ="*{publishers}" class="form-control" id="publisherField" >
+                  <option th:each="publisher: ${publishers}" th:value="${publisher.id}" th:text = "${publisher.name}"></option>
+                </select>
+              </div>
+              <button class="btn btn-success" type="submit">Submit</button>
+              <button class="btn btn-warning" type="reset">Reset</button>
+            </form>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>

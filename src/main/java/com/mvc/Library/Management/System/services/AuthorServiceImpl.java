@@ -23,15 +23,8 @@ public class AuthorServiceImpl implements AuthorService{
 
     @Override
     public Author updateAuthor(Author author, Integer authorId) {
-        Author selectedAuthor =authorRepository.findById(authorId).get();
-        if(author.getName()!=null){
-            selectedAuthor.setName(author.getName());
-        }
-        if(author.getDescription()!=null){
-            selectedAuthor.setDescription(author.getDescription());
-        }
-
-        return authorRepository.save(selectedAuthor);
+        author.setId(authorId);
+        return authorRepository.save(author);
     }
 
     @Override

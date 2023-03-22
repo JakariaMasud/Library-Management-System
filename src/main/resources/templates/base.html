@@ -9,48 +9,48 @@
   <title th:text="${title}">Library Management System</title>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
   <a class="navbar-brand" th:href="@{/}">Library Management System</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto ">
-      <li class="nav-item active">
-        <a class="nav-link" th:href ="@{/}">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"  th:href="@{/addCategory}">Add Category</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"  th:href="@{/addAuthor}">Add Author</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/addPublisher}">Add Publisher</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" th:href="@{/addBook}">Add Book</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/authors}">Authors</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/categories}">Categories</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/publishers}">Publishers</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" th:href="@{/books}">Books</a>
-      </li>
-    </ul>
-  </div>
 </nav>
 
-<div th:replace="${content}">
 
-</div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white nav nav-pills">
+        <div class="position-sticky">
+          <div class="list-group list-group-flush mx-3 mt-4 ">
+            <a href="#" th:href ="@{/}" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+              <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+            </a>
+            <a href="#" th:href ="@{/}" th:classappend="${servletPath == '/'? 'active':''}" class="list-group-item list-group-item-action py-2 ripple ">Home</a>
+            <a href="#" th:href="@{/addBook}"  th:classappend="${servletPath == '/addBook' ? 'active':''}" class="list-group-item list-group-item-action py-2 ripple">Add Book</a>
+            <a href="#" th:href="@{/addPublisher}"  th:classappend="${servletPath == '/addPublisher' ? 'active':''}" class="list-group-item list-group-item-action py-2 ripple">Add Publisher</a>
+            <a href="#" th:href="@{/addCategory}" th:classappend="${servletPath == '/addCategory' ? 'active':''}" class="list-group-item list-group-item-action py-2 ripple">Add Category</a>
+            <a href="#" th:href="@{/addAuthor}"  th:classappend="${servletPath == '/addAuthor' ? 'active':''}"class="list-group-item list-group-item-action py-2 ripple">Add Author</a>
+            <a href="#" th:href="@{/books}"  th:classappend="${servletPath == '/books' ? 'active':''}" class="list-group-item list-group-item-action py-2 ripple">Books</a>
+            <a href="#" th:href="@{/categories}" th:classappend="${servletPath == '/categories' ? 'active':''}" class="list-group-item list-group-item-action py-2 ripple">Category</a>
+            <a href="#" th:href="@{/publishers}" th:classappend="${servletPath == '/publishers' ? 'active':''}" class="list-group-item list-group-item-action py-2 ripple">Publishers</a>
+            <a href="#" th:href="@{/authors}" th:classappend="${servletPath == '/authors' ? 'active':''}" class="list-group-item list-group-item-action py-2 ripple">Authors</a>
+            <a href="#" th:href="@{/logout}" th:classappend="${servletPath == '/logout' ? 'active':''}" class="list-group-item list-group-item-action py-2 ripple">Logout</a>
+
+          </div>
+        </div>
+      </nav>
+      </div>
+    <div class="col-md-9">
+      <div th:replace="${content}">
+      </div>
+    </div>
+
+  </div>
+
+
 
 <script src="https://kit.fontawesome.com/4e53d21f2f.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="auth-base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<section>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div>
+          <h1 class="text-center">Login Now!!!</h1>
+          <div>
+            <form method="post" th:action="@{/do_login}" action="#">
+              <div th:if="${param.error}" class="alert alert-danger">
+              Invalid Username or Password
+              </div>
+              <div th:if="${param.logout}" class="alert alert-success">
+                Logout Successfully
+              </div>
+              <div class="mb-3">
+                <label for="emailField" class="form-label">Email</label>
+                <input type="email" class="form-control" id="emailField" placeholder="Enter Email " th:name="username">
+              </div>
+              <div class="mb-3">
+                <label for="passwordField" class="form-label">Password</label>
+                <input type="password" class="form-control" id="passwordField" placeholder="Enter Password " th:name="password">
+              </div>
+              <button class="btn btn-success" type="submit">Submit</button>
+              <button class="btn btn-warning" type="reset">Reset</button>
+            </form>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>
